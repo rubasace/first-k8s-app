@@ -1,0 +1,17 @@
+apiVersion: v1
+kind: Pod
+metadata:
+  name: sidecar
+  namespace: workshop
+spec:
+  containers:
+  - name: myapp
+    image: myapp:latest
+    ports:
+    - containerPort: 8080
+    imagePullPolicy: Never	
+  - name: sidecar
+    image: alpine
+    command:
+      - sleep
+      - "999999999999"
